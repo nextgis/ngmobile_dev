@@ -1,0 +1,71 @@
+    /*
+ * Project:  NextGIS Mobile
+ * Purpose:  Mobile GIS for Android.
+ * Author:   Dmitry Baryshnikov (aka Bishop), bishop.dev@gmail.com
+ * Author:   NikitaFeodonit, nfeodonit@yandex.com
+ * Author:   Stanislav Petriakov, becomeglory@gmail.com
+ * *****************************************************************************
+ * Copyright (c) 2012-2021 NextGIS, info@nextgis.com
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+apply plugin: 'com.android.library'
+
+android {
+    defaultConfig {
+        minSdkVersion 26
+        compileSdk 34
+        targetSdkVersion 34
+        versionName '2.8.0'
+        buildConfigField "String", "VERSION_NAME", "\"$versionName\""
+    }
+    productFlavors {
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+    compileOptions {
+        sourceCompatibility "17"
+        targetCompatibility "17"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_16
+        targetCompatibility JavaVersion.VERSION_16
+    }
+    namespace 'com.nextgis.maplib'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.github.barsrb:hyperlog-android:master-SNAPSHOT'
+
+    implementation 'com.android.volley:volley:1.2.1'
+
+
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'io.tus.java.client:tus-java-client:0.4.5'
+    implementation 'io.tus.android.client:tus-android-client:0.1.10'
+
+}
